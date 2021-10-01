@@ -1,4 +1,7 @@
 int gridSize = 8;
+int y = 0;
+int x = 0;
+int line = 1;
 void setup() {
   size(800, 800);
   frameRate(60);
@@ -17,16 +20,22 @@ void draw() {
   //  }
   //}
 
-  int y = 0;
   fill(255);
   for (int i = 0; i <= (width/sizeX) * (height/sizeY); i++) {
-    if (i == width/sizeX) {
-      y++;
-      println(width/sizeX);
-    }
-    rect(i*sizeX, y*sizeY, sizeX, sizeY);
-    println(i);
+    //println("i: " + i + "\nwidth: " + width/sizeX);
+    println(x);
     println(y);
+    println(" ");
+    rect(x*sizeX, y*sizeY, sizeX, sizeY);
+    if (i == (width/sizeX) * line) {
+      y++;
+      line++;
+    }
+    if (i%gridSize!=0) {
+      x++;
+    } else {
+      x = 0;
+    }
   }
   noLoop();
 }
